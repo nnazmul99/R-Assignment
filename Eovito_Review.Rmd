@@ -1,0 +1,5 @@
+# I believe this code was written very well. 
+# The data inspection component was thoroughly done, and I think you discovered a lot of good information about the file content you were examining. 
+# As for the data processing section, I think this was also done very well. Your lines of code were well annotated, so I was able to follow exactly what you were doing without trouble.
+# The only recommendation that I would have is to maybe annotate your for-loops a bit more so that the reader understands exactly what is going on if they have no background in R programming.
+# Overall, there isn’t anything drastic that I would change or add, as I believe you covered everything that the Professors were looking for.
