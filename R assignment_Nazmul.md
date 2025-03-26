@@ -172,6 +172,7 @@ else {write.table(files_dec, file = paste("Teosinte_Chr",i,"_decrease.txt",sep="
 }
 ```
 ### Plotting
+SNPs per chromosome
 ```sh
 snp %>% 
 dplyr::select(SNP_ID, Chromosome, Position) %>%
@@ -207,4 +208,4 @@ snpnew %>%
   ggtitle("The distribution of SNP position on each chromosome") +
   xlab("Chromosome")
 ```
-
+####
