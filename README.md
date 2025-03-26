@@ -212,8 +212,7 @@ snpnew %>%
 #### Missing data and amount of heterozygosity
 
 ```sh
-fang_genotypes <- fang_et_al_genotypes %>%
-  select(-one_of("JG_OTU")) %>%  
+fang_genotypes <- fang_et_al_genotypes %>%  
   pivot_longer(-c(Sample_ID, Group), names_to = "SNP_ID", values_to = "Genotype") %>%
   mutate(
     genotype_type = case_when(
@@ -230,7 +229,7 @@ fang_genotypes <- fang_et_al_genotypes %>%
   "Missing" = "#7570b3"       
 )
 #### Proportion of genotypes per group
-ggplot(tidy_fang_genotypes, aes(x = Group, fill = genotype_type)) +
+ggplot(fang_genotypes, aes(x = Group, fill = genotype_type)) +
   geom_bar(position = "fill") +
   labs(x = "Group", y = "Proportion", title = "Genotype Proportion by Group") +
   scale_fill_manual(name = "Genotypes", values = colors) +
