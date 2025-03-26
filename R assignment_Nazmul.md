@@ -212,8 +212,7 @@ snpnew %>%
 
 ```sh
 fang_genotypes <- fang_et_al_genotypes %>%
-  select(-one_of("JG_OTU")) %>%  
-  pivot_longer(-c(Sample_ID, Group), names_to = "SNP_ID", values_to = "Genotype") %>%
+pivot_longer(-c(Sample_ID, Group), names_to = "SNP_ID", values_to = "Genotype") %>%
   mutate(
     genotype_type = case_when(
       Genotype %in% c("A/A", "T/T", "C/C", "G/G") ~ "Homozygous",
