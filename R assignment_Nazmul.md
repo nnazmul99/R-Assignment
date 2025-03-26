@@ -208,4 +208,34 @@ snpnew %>%
   ggtitle("The distribution of SNP position on each chromosome") +
   xlab("Chromosome")
 ```
-####
+#### Missing data and amount of heterozygosity
+
+```sh
+fang_genotypes <- fang_et_al_genotypes %>%
+  select(-one_of("JG_OTU")) %>%  
+  pivot_longer(-c(Sample_ID, Group), names_to = "SNP_ID", values_to = "Genotype") %>%
+  mutate(
+    genotype_type = case_when(
+      Genotype %in% c("A/A", "T/T", "C/C", "G/G") ~ "Homozygous",
+      Genotype == "?/?" ~ "Missing",
+      TRUE ~ "Heterozygous"
+    ),
+    Sample_ID = factor(Sample_ID, levels = unique(Sample_ID)),  
+    Group = factor(Group, levels = unique(Group))
+  )
+    colors <- c(
+  "Homozygous" = "#d95f02",
+  "Heterozygous" = "#1b9e77",   
+  "Missing" = "#7570b3"       
+)
+#### Proportion of genotypes per group
+ggplot(tidy_fang_genotypes, aes(x = Group, fill = genotype_type)) +
+  geom_bar(position = "fill") +
+  labs(x = "Group", y = "Proportion", title = "Genotype Proportion by Group") +
+  scale_fill_manual(name = "Genotypes", values = colors) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+legend.position = "top"
+  )
+```
